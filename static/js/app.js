@@ -109,7 +109,37 @@ d3.json("samples.json").then(function(i) {
             .append("p")
             .text(d => d);
 
-    }; // end of on change function
+        // OPTIONAL: Gauge Plot
+
+        var dataGauge = [
+            {
+                value: metadata[dataset]["wfreq"],
+                title: { text: "Wash Frequency" },
+                type: "indicator",
+                mode: "gauge+number",
+                gauge: {
+                    axis: {range: [0, 9]},
+                    steps: [
+                        { range: [0, 1], color: "lightgray" },
+                        { range: [1, 2], color: "lightgray" },
+                        { range: [2, 3], color: "lightgray" },
+                        { range: [3, 4], color: "lightgray" },
+                        { range: [4, 5], color: "lightgray" },
+                        { range: [5, 6], color: "lightgray" },
+                        { range: [6, 7], color: "lightgray" },
+                        { range: [7, 8], color: "lightgray" },
+                        { range: [8, 9], color: "lightgray" },
+                    ]
+                }
+              
+            }
+        ];
+        
+        var layoutGauge = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+        
+        Plotly.newPlot('gauge', dataGauge, layoutGauge);
+
+    }; // end of on.change function
 
     // onchange code copy for initial landing plot displays 
     function init() {
