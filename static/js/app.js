@@ -117,21 +117,21 @@ d3.json("samples.json").then(function(i) {
                 title: { text: "Wash Frequency" },
                 type: "indicator",
                 mode: "gauge+number",
+                // text: ["0-1", "1-2", "2-3","3-4","4-5","5-6","6-7","7-8","8-9"],
                 gauge: {
                     axis: {range: [0, 9]},
                     steps: [
-                        { range: [0, 1], color: "lightgray" },
-                        { range: [1, 2], color: "lightgray" },
-                        { range: [2, 3], color: "lightgray" },
-                        { range: [3, 4], color: "lightgray" },
-                        { range: [4, 5], color: "lightgray" },
-                        { range: [5, 6], color: "lightgray" },
-                        { range: [6, 7], color: "lightgray" },
-                        { range: [7, 8], color: "lightgray" },
-                        { range: [8, 9], color: "lightgray" },
+                        { range: [0, 1], color: "#FFFFFF", name: "0-1"},
+                        { range: [1, 2], color: "#EFEFEF" },
+                        { range: [2, 3], color: "#DFDFDF" },
+                        { range: [3, 4], color: "#CFCFCF" },
+                        { range: [4, 5], color: "#BFBFBF" },
+                        { range: [5, 6], color: "#AFAFAF" },
+                        { range: [6, 7], color: "#9F9F9F" },
+                        { range: [7, 8], color: "#8F8F8F" },
+                        { range: [8, 9], color: "#7F7F7F" },
                     ]
                 }
-              
             }
         ];
         
@@ -203,6 +203,34 @@ d3.json("samples.json").then(function(i) {
             .enter()
             .append("p")
             .text(d => d);
+        
+        var dataGauge = [
+            {
+                value: metadata[dataset]["wfreq"],
+                title: { text: "Wash Frequency" },
+                type: "indicator",
+                mode: "gauge+number",
+                // text: ["0-1", "1-2", "2-3","3-4","4-5","5-6","6-7","7-8","8-9"],
+                gauge: {
+                    axis: {range: [0, 9]},
+                    steps: [
+                        { range: [0, 1], color: "#FFFFFF", name: "0-1"},
+                        { range: [1, 2], color: "#EFEFEF" },
+                        { range: [2, 3], color: "#DFDFDF" },
+                        { range: [3, 4], color: "#CFCFCF" },
+                        { range: [4, 5], color: "#BFBFBF" },
+                        { range: [5, 6], color: "#AFAFAF" },
+                        { range: [6, 7], color: "#9F9F9F" },
+                        { range: [7, 8], color: "#8F8F8F" },
+                        { range: [8, 9], color: "#7F7F7F" },
+                    ]
+                }
+            }
+        ];
+        
+        var layoutGauge = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+        
+        Plotly.newPlot('gauge', dataGauge, layoutGauge);
 
     }; init();
 
